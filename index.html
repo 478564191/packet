@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {
+				margin:0;
+				padding:0;
+			}
+			table {
+				border-collapse:collapse;
+				border-spacing:0;
+			}
+			img {
+				border:0
+			}
+			address, caption, cite, code, dfn, em, th, var {
+				font-style:normal;
+				font-weight:normal
+			}
+			ol, ul {
+				list-style:none
+			}
+			li {
+				vertical-align:bottom;
+			}
+			a{
+				text-decoration:none;
+			}
+			body{ 
+				font-family:"Microsoft YaHei";
+			}
+			i,em{
+				font-style:normal;
+			}
+			.main .bg{
+				width:800px;
+				height:600px;
+				background:#fff;
+				box-shadow:0px 0px 10px #ccc;
+				margin:50px auto;
+			}
+			.main .bg .list{
+				background:#f5f6f9;
+				width:100%;
+				height:55px;
+				border-bottom:1px solid #c8ccd5;
+			}
+			.main .bg .list .upload{
+				float:left;
+				height:35px;
+				width:120px;
+				background:#3091f2;
+				text-align:center;
+				line-height:34px;
+				margin-top:10px;
+			}
+			.main .bg .list .upload a{
+				display:block;
+				color:#fff;
+			}
+			.main .bg .list .new-wjj,.list .delete{
+				margin-right:15px;
+				margin-top:10px;
+				display:inline-block !important;
+				width:auto;
+				height:35px;
+				background:#fff;
+				border:1px solid #c7c9cf;
+				line-height:35px;
+				padding:0 15px;
+				float:right;
+			}
+			.main .bg .list .new-wjj a,.list .delete a{
+				display:block;
+				color:#505254;
+			}
+			i{
+				width:22px;
+				height:22px; 
+				vertical-align:middle;
+				margin-bottom:3px;
+				display:inline-block;
+			}
+			.add-icon{
+				background:url(../images/add-icon.png) no-repeat;
+				background-size:100% 100%;
+			}
+			.delete-icon{
+				background:url(../images/delete-icon1.png) no-repeat;
+				background-size:100% 100%;
+			}
+			.delete a:hover{
+				background:url(../images/delete-icon2.png) no-repeat;
+				background-size:22px 22px;
+				display:inline-block;
+				background-position-y:6.5px;
+			}
+			.delete a span:hover{
+				color:#2c2c2c;
+			}
+			.new-icon{
+				background:url(../images/new-icon1.png) no-repeat;
+				background-size:100% 100%;
+			}
+			.new-wjj a:hover{
+				background:url(../images/new-icon2.png) no-repeat;
+				background-size:22px 22px;
+				display:inline-block;
+				background-position-y:6.5px;
+			}
+			.new-wjj a span:hover{
+				color:#2c2c2c;
+			}
+			.main .container .title{
+				border-bottom:1px solid #ccc;
+				height:46px;
+				background:#fff;
+				line-height:46px;
+			}
+			.main .container #step{
+				overflow:hidden;
+				z-index:100;
+				padding-left:10px;
+				font-size:14px;
+			}
+			.main .container #step a{
+				display:block;
+				color:#505254;
+			}
+			.main .container #step span{  
+	            height:40px;  
+	            width:auto;
+	            display:inline-block !important;
+	            float:left;  
+	            margin-right:42px;  
+	            background:#dde1e9;  
+	            position: relative;  
+	            line-height:40px;  
+	            padding-left:10px;  
+	            margin-top:3px;
+	        }  
+	        .main .container #step .three{
+	        	background:#ccc;
+	        }
+	        .main .container #step .one:after{
+	        	 border-left: 20px solid #dde1e9;
+	        }
+	        #step .two:after,#step .three:after{
+	        	border-left: 20px solid #ccc; 
+	        }
+	        .main .container #step .one:after,#step .two:after,#step .three:after{  
+	            width: 0;  
+	            height: 0;  
+	            content:' ';  
+	            border-top: 20px solid transparent;  
+	            border-bottom: 20px solid transparent;  
+	            border-right: 20px solid transparent;  
+	            position: absolute;  
+	            right: -40px;  
+	            top: 0;  
+	        }  
+	        .main .container #step .two:before,#step .three:before{  
+	            width: 0;  
+	            height: 0;  
+	            content:' ';  
+	            border-top: 20px solid #ccc;  
+	            border-right: 20px solid #ccc;  
+	            border-left: 20px solid transparent;  
+	            border-bottom: 20px solid #ccc;  
+	            position: absolute;  
+	            left: -40px;  
+	            top: 0;  
+	        }  
+	       	.main .container #step .active{  
+	           	background: #ccc;  
+	           	border-color: #ccc;  
+	       	}  
+	       	.main .container #step .active:before{  
+	          	border-top-color:#ccc;  
+	            border-right-color: #ccc;  
+	            border-left-color: transparent;  
+	            border-bottom-color: #ccc;  
+	       	}  
+	        .main .container #step .active:after{  
+	           	border-top-color:transparent;  
+	            border-left-color:#ccc;  
+	            border-bottom-color:transparent;  
+	            border-right-color:transparent;  
+	       	}  
+	       	.main .container .all-file .file-name{
+	       		width:130px;
+	       		float:left;
+	       		margin-right:20px;
+	       		position:relative;
+	       		margin-top:5px;
+	       	}
+	       	.main .container .all-file .file-name a{
+	       		color:#505254;
+	       		display:block;
+	       		text-align:center;
+	       	}
+	       	.main .container .all-file .file-name a .content input{
+	       		position:absolute;
+	       		top:0;
+	       		left:0;
+	       	}
+	       	.main .container .all-file .file-name a .content img{
+	       		width:120px;
+	       		height:120px; 
+	       	}
+	       	.main .container .all-file .file-name a .content-dif img{
+	       		width:106px;
+	       		height:106px;
+	       	}
+       		.main .container .all-file .file-name a .content1 p{
+       			margin-top:-15px;
+       		}
+       		.main .container .all-file .file-name a .content p{
+       			padding:0 6px 6px;
+       		}
+			.file-name a:hover,a.check{
+				background:#e6e6e6;
+				border:1px solid #ccc;
+			}
+			.file-name a input{
+				display: none;
+			}
+			.file-name a input:hover,.file-name a.check input{
+				display: inline;
+			}
+			label{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class = "main">
+			<div class = "bg" style = "position:relative;">
+				<ul class = "list">
+					<li class = "upload">
+						<div class = "upload-div">
+							<a href="javsdcript:void(0);">
+								<i class = "add-icon"></i>
+								<span>上传</span>
+							</a>
+						</div>
+					</li>
+					<li class = "new-wjj">
+						<a href="javsdcript:void(0);">
+							<i class = "new-icon"></i>
+							<span>新建文件夹</span>
+						</a>
+					</li>
+					<li class = "delete">
+						<a href="javsdcript:void(0);">
+							<i class = "delete-icon"></i>
+							<span>删除</span>
+						</a>
+					</li>
+				</ul>
+				<!--<div style="clear:both;"></div>-->
+				<div class = "container" style = "padding:0 20px;">
+					<div class = "title">
+						<div style = "float:left;">
+							<input type="checkbox" style = "margin-bottom:8px;" id = "selectAll" onclick = "selectAll()"/>
+						</div>
+						<div id="step">  
+							<a href="javascript:void(0);"><span class="one ">文件</span></a> 
+							<a href="javascript:void(0);"><span class="two active">文件夹</span></a>
+							<a href="javascript:void(0);"><span class="three ">个人简历</span></a>
+						</div>  
+					</div>
+					<div style = "clear:both;"></div>
+					<div class = "all-file" style = "overflow:hidden;">
+						<div style = "overflow:hidden;">
+							<div class = "file-name">
+								<a href="javacript:void(0);">
+									<label>
+										<div class = "content content1">
+											<input class = "checkbox" style = "" type="checkbox" id = "selectLot" onclick = "selectLot()"/>
+											<img class src="../images/wjj-icon.png" alt="" />
+											<p>这是文件夹这是文件夹</p>
+										</div>
+									</label>
+								</a>
+							</div>
+							
+							<div class = "file-name">
+								<a href="javacript:void(0);">
+									<label>
+										<div class = "content content-dif">
+											<input class = "checkbox" style = "" type="checkbox" id = "selectLot" onclick = "selectLot()"/>
+											<img class src="../images/PDF.png" alt="" />
+											<p>这是PDF文件</p>
+										</div>
+									</label>
+								</a>
+							</div>
+							<div class = "file-name">
+								<a href="javacript:void(0);">
+									<label>
+										<div class = "content content-dif">
+											<input class = "checkbox" style = "" type="checkbox" id = "selectLot" onclick = "selectLot()"/>
+											<img class src="../images/TXT.png" alt="" />
+											<p>这是TXT文件</p>
+										</div>
+									</label>
+								</a>
+							</div>
+							<div class = "file-name">
+								<a href="javacript:void(0);">
+									<label>
+										<div class = "content content-dif">
+											<input class = "checkbox" style = "" type="checkbox" id = "selectLot" onclick = "selectLot()"/>
+											<img class src="../images/zip.png" alt="" />
+											<img class style = "display:none;" src="../images/rar.png" alt="" />
+											<p>这是zip文件</p>
+										</div>
+									</label>
+								</a>
+							</div>
+							<div class = "file-name">
+								<a href="javacript:void(0);">
+									<label>
+										<div class = "content content-dif">
+											<input class = "checkbox" style = "" type="checkbox" id = "selectLot" onclick = "selectLot()"/>
+											<img class src="../images/jpg.png" alt="" />
+											<img class style = "display:none;" src="../images/png.png" alt="" />
+											<img class style = "display:none;" src="../images/gif.png" alt="" />
+											<img class style = "display:none;" src="../images/bmp.png" alt="" />
+											<p>这是jpg文件</p>
+										</div>
+									</label>
+								</a>
+							</div>
+						</div>
+						
+						<div style = "overflow:hidden;">
+							<div class = "file-name">
+								<a href="javacript:void(0);">
+									<label>
+										<div class = "content content-dif">
+											<input class = "checkbox" type="checkbox" id = "selectLot" onclick = "selectLot()"/>
+											<img class src="../images/word.png" alt="" />
+											<p>这是word文件</p>
+										</div>
+									</label>
+								</a>
+							</div>
+							<div class = "file-name">
+								<a href="javacript:void(0);">
+									<label>
+										<div class = "content content-dif">
+											<input class = "checkbox" type="checkbox" id = "selectLot" onclick = "selectLot()"/>
+											<img class src="../images/EXCLE.png" alt="" />
+											<p>这是excle文件</p>
+										</div>
+									</label>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src = "../js/jquery-1.10.2.min.js"></script>
+	<script>
+		function selectAll(){
+			if($("#selectAll").prop("checked")){
+				$(":checkbox").prop("checked",true);
+			}
+			else{
+				$(":checkbox").prop("checked",false);
+			}
+		};
+		function selectLot(){
+			if(!$("#selectLot").prop("checked")){
+				$("#selectAll").prop("checked",false);
+			}
+			var length1 = $("input[type='checkbox'][id='selectLot']").length;
+			var length2 = $("input[type='checkbox'][id='selectLot']:checked").length;
+			if(length1 == length2){
+				$("#selectAll").prop("checked",true);
+			}
+		};
+		$(":checkbox").click(function(){
+			if(this.checked){
+				$(this).parents("a").addClass("check");
+			}else{
+				$(this).parents("a").removeClass("check");
+			}
+		});
+	</script>
+</html>
